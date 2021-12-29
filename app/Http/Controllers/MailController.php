@@ -35,32 +35,62 @@ class MailController extends Controller
             'attachment1' => 'required',
             'attachment2' => 'required'
         ]);*/
+        /*
+        
+        RG = RG
+        CPF = CPF
+        CR = COMPROVANTE RESIDENCIA
+        DB = DOMICILIO BANCARIO 
+        EB = EXTRATO BANCARIO 
+        CC = CARTAO CNPJ 
+        */
+
+        $hora = date("YmdHis").gettimeofday()["usec"];
+        $cpf = $request['cpf'];
+        $cpf = str_replace("-","",str_replace(".","",$cpf));
+        $pfj = $request['tppessoa'];
 
         $path = public_path('uploads');
-        $attachment = $request->file('attachment');
-        $hora = date("YmdHis").gettimeofday()["usec"];
-        $name = $hora.'.'.$attachment->getClientOriginalExtension();
         if(!File::exists($path)) {
             File::makeDirectory($path, $mode = 0777, true, true);
         }
+        
+        $attachment = $request->file('attachment');
+        $name = $cpf."_RG.".$attachment->getClientOriginalExtension();
         $attachment->move($path, $name);
         $filename = $path.'/'.$name;
         #sleep(1);
 
         $attachment1 = $request->file('attachment1');
-        $hora = date("YmdHis").gettimeofday()["usec"];
-        $name1 = $hora.'.'.$attachment1->getClientOriginalExtension();
+        $name1 = $cpf."_CPF.".$attachment1->getClientOriginalExtension();
         $attachment1->move($path, $name1);
         $filename1 = $path.'/'.$name1;
         #sleep(1);
 
         $attachment2 = $request->file('attachment2');
-        $hora = date("YmdHis").gettimeofday()["usec"];
-        $name2 = $hora.'.'.$attachment2->getClientOriginalExtension();
+        $name2 = $cpf."_CR.".$attachment2->getClientOriginalExtension();
         $attachment2->move($path, $name2);
         $filename2 = $path.'/'.$name2;
-        
-        $filename = $filename.",".$filename1.",".$filename2;
+
+        $attachment3 = $request->file('attachment3');
+        $name3 = $cpf."_DB.".$attachment3->getClientOriginalExtension();
+        $attachment3->move($path, $name3);
+        $filename3 = $path.'/'.$name3;
+
+        $attachment4 = $request->file('attachment4');
+        $name4 = $cpf."_EB.".$attachment4->getClientOriginalExtension();
+        $attachment4->move($path, $name4);
+        $filename4 = $path.'/'.$name4;
+
+        $filename = $filename.",".$filename1.",".$filename2.",".$filename3.",".$filename4;
+
+        if ($pfj=="PJ")  {
+            $attachment5 = $request->file('attachment5');
+            $name5 = $cpf."_CC.".$attachment5->getClientOriginalExtension();
+            $attachment5->move($path, $name5);
+            $filename5 = $path.'/'.$name5;
+            $filename .= ",".$filename5;
+        }
 
         $oemail = [];
         $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
@@ -73,10 +103,12 @@ class MailController extends Controller
             report($e);
             return false;
         }
+        /*
         $files = explode(",",$filename);
         foreach ($files as $file) { 
-            unlink($file) ;
+            #unlink($file) ;
         } 
+        */
         echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');document.location='https://www.meuparca.com/';</script>";
         //dd($filename);
         return true;

@@ -100,13 +100,11 @@
             }); 
 
             $(document).on( "click", "#finalizando", function() {
+              alert("O FORMULARIO VAI SER MOSTRADO NOVAMENTE PARA CONFERÊNCIA");
               $("#fTudo,.forms,#enviando").show();
               $("#fases,#finalizando").hide();
               $(".b1,.a1").hide();
             });  
-
-
-
 
             $(document).on( "click", ".a1", function() {
                 var f = $(this).attr("p");
@@ -141,6 +139,13 @@
 
             $(":input").inputmask();
 
+            $(document).on( "click", ".tppessoa", function() {
+                var t = $(this).val();
+                $("#carcnpj").show();
+                if (t=="PF") {
+                   $("#carcnpj").hide();
+                }
+            });
             $("#telefone,#telefone1,#celular,#celular1").inputmask({
             mask: '(99) 9 9999-9999',
             placeholder: ' ',
@@ -164,7 +169,7 @@
               });
 
               $("#cpf").inputmask({
-                mask: '99.999.999-99',
+                mask: '999.999.999-99',
                 placeholder: ' ',
                 showMaskOnHover: false,
                 showMaskOnFocus: false,

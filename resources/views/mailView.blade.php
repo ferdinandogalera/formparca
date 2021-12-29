@@ -76,7 +76,7 @@
       <div id='form1' class="forms row g-3 border m-2 mb-3 pb-3">
        
         <div class="col-12 fw-bold">
-            <label for="">II. DADOS DO CONTRATANTE/EMPRESA</label>
+            <label for="">II. DADOS CADASTRAIS/EMPRESA</label>
         </div>
 
 
@@ -179,15 +179,20 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-12 my-1 fw-bold">
-              <label for="tpconta" >Tipo da Conta</label><br><br>
-              <label class='ms-3'>Conta Corrente</label> <input class="form-check-input ms-1" checked type="radio" name="tpconta" id="tpconta" value="Corrente" aria-label="...">
-              <label  class='ms-3'>Poupança </label> <input class="form-check-input ms-3" type="radio" name="tpconta" id="tpconta" value="Poupanca" aria-label="...">
-            </div>
+        <div class="row" style='margin-left:4px'>
+          <div class="col-sm-6 border pb-3 my-1">
+            <label for="tpconta">Tipo de Conta</label><br>
+            <label class='ms-3'>Conta Corrente</label> <input class="form-check-input ms-3" checked type="radio" name="tpconta" id="tpconta" value="Corrente" aria-label="...">
+            <label  class='ms-3'>Poupança </label> <input class="form-check-input ms-3" type="radio" name="tpconta" id="tpconta" value="Poupanca" aria-label="...">
+          </div>
+          <div class="col-sm-5 border pb-3 my-1" style='margin-left:10px'>
+            <label for="tppessoa">Pessoa</label><br>
+            <label class='ms-3'>Juridica</label> <input class="form-check-input ms-3 tppessoa" checked type="radio" name="tppessoa" id="tppessoa" value="PJ" aria-label="...">
+            <label  class='ms-3'>Fisica</label> <input class="form-check-input ms-3  tppessoa" type="radio" name="tppessoa" id="tppessoa" value="PF" aria-label="...">
+          </div>
         </div>
 
-
+        
         <div class="col-12">
             <button type="button" p='form3' s=2 e=3 class="a1 btn btn-primary float-end">Avançar</button>
             <button type="button" p='form1' s=2 e=1 class="b1 btn btn-primary float-end" style='margin-right:60px'>Voltar</button>
@@ -320,7 +325,7 @@
     
         <div class="jumbotron">
             <h1>Quase lá</h1>
-            <p>Por favor, envie anexe a copia do seu CPF e RG .</p>
+            <p>Por favor, envie os documentos solicitados abaixo:</p>
           </div>
 
         <div class="row">
@@ -349,6 +354,31 @@
                 <input type="file" class="form-control" name='attachment2' id="attachment2">
             </div>
         </div>
+
+        <div class="row">
+          <div class="col-sm-12 my-1 fw-bold">
+              <label for="attachment3" >Domicilio Bancario</label>
+              <input type="file" class="form-control" name='attachment3' id="attachment3">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 my-1 fw-bold">
+              <label for="attachment4" >Extrato Bancario (CABEÇALHO DO EXTRATO)</label>
+              <input type="file" class="form-control" name='attachment4' id="attachment4">
+          </div>
+        </div>
+
+        <div class="row" id='carcnpj'>
+          <div class="col-sm-12 my-1 fw-bold">
+              <label for="attachment5" >Cartão CNPJ (se for PJ)</label>
+              <input type="file" class="form-control" name='attachment5' id="attachment5">
+          </div>
+        </div>
+
+
+        
+
 
 
         
