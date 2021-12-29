@@ -51,6 +51,7 @@ class MailController extends Controller
         $pfj = $request['tppessoa'];
 
         $path = public_path('uploads');
+        
         if(!File::exists($path)) {
             File::makeDirectory($path, $mode = 0777, true, true);
         }
@@ -59,28 +60,34 @@ class MailController extends Controller
         $name = $cpf."_RG.".$attachment->getClientOriginalExtension();
         $attachment->move($path, $name);
         $filename = $path.'/'.$name;
-        #sleep(1);
+        FILE::chmod($filename,777);
 
         $attachment1 = $request->file('attachment1');
         $name1 = $cpf."_CPF.".$attachment1->getClientOriginalExtension();
         $attachment1->move($path, $name1);
         $filename1 = $path.'/'.$name1;
-        #sleep(1);
-
+        FILE::chmod($filename1,777);
+        
         $attachment2 = $request->file('attachment2');
         $name2 = $cpf."_CR.".$attachment2->getClientOriginalExtension();
         $attachment2->move($path, $name2);
         $filename2 = $path.'/'.$name2;
+        FILE::chmod($filename2,777);
+        
 
         $attachment3 = $request->file('attachment3');
         $name3 = $cpf."_DB.".$attachment3->getClientOriginalExtension();
         $attachment3->move($path, $name3);
         $filename3 = $path.'/'.$name3;
+        FILE::chmod($filename3,777);
+        
 
         $attachment4 = $request->file('attachment4');
         $name4 = $cpf."_EB.".$attachment4->getClientOriginalExtension();
         $attachment4->move($path, $name4);
         $filename4 = $path.'/'.$name4;
+        FILE::chmod($filename4,777);
+        
 
         $filename = $filename.",".$filename1.",".$filename2.",".$filename3.",".$filename4;
 
@@ -89,10 +96,10 @@ class MailController extends Controller
             $name5 = $cpf."_CC.".$attachment5->getClientOriginalExtension();
             $attachment5->move($path, $name5);
             $filename5 = $path.'/'.$name5;
+            FILE::chmod($filename5,777);
             $filename .= ",".$filename5;
         }
 
-        FILE::chmod($path,"777");
         
         $oemail = [];
         $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
