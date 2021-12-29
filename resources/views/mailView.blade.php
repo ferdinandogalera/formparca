@@ -273,9 +273,13 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12 my-1 fw-bold">
+            <div class="col-sm-6 my-1 fw-bold">
               <label for="profissao" >Profissão</label>
               <input type="text" class="form-control" Trequired  name='profissao' id="profissao" placeholder="Informe sua profissão">
+            </div>
+            <div class="col-sm-6 my-1 fw-bold">
+              <label for="datanascimento" >Data de Nascimento</label>
+              <input type="text" class="form-control" Trequired  name='datanascimento' id="datanascimento" placeholder="Data de Nascimento">
             </div>
         </div>
 

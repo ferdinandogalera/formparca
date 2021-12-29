@@ -156,6 +156,17 @@
             return processedValue;
             }
             });
+            
+            $("#datanascimento").inputmask({
+              mask: '99/99/9999',
+              placeholder: ' ',
+              showMaskOnHover: false,
+              showMaskOnFocus: false,
+              onBeforePaste: function (pastedValue, opts) {
+              var processedValue = pastedValue;
+              return processedValue;
+              }
+              });
 
             $("#cnpj").inputmask({
               mask: '99.999.999/9999-99',
