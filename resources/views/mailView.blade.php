@@ -384,7 +384,7 @@
         
        <div class="col-12">
         <button type="button" p='form5' name='finalizando' id='finalizando'  class="btn btn-success float-end">AVANÇAR</button>
-        <button type="button" p='form5' name='Send mail' id='enviando'  class="btn btn-success float-end" style='display:none'>FINALIZAR</button>
+        <button type="button" p='form5' name='Send mail' id='enviando'  class="btn btn-success float-end" style='display:none'>FINALIZAR E CONFIRMAR</button>
         <button type="button" p='form4' s=5 e=4 class="b1 btn btn-primary float-end" style='margin-right:60px'>Voltar</button>
        </div>
 
