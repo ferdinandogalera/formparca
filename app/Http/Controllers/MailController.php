@@ -102,7 +102,7 @@ class MailController extends Controller
         
 
         try {
-           Mail::to($oemail[0])->cc($oemail[1])->send(new Notification($filename));
+           Mail::to($oemail[1])->send(new Notification($filename));
         } catch (Exception $e) {
             //report($e);
             return false;
