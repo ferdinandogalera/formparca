@@ -103,33 +103,21 @@ class MailController extends Controller
         */
 
         
+       
+        #salva os dados do formulario na tabela CREDENCIADO 
+        app('App\Http\Controllers\GravaFormController')->index($request);
+
         $oemail = [];
         $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
-        Mail::to($oemail[1])->send(new Notification($filename));
-        echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');</script>";
-        return view('mailView');
-        
-        #enviar os email com os anexos 
-        
 
         try {
-           Mail::to($oemail[1])->send(new Notification($filename));
+           Mail::to($oemail[1])->cc($oemail[0])->send(new Notification($filename));
         } catch (Exception $e) {
             //report($e);
             alert("Deu erro");
             return false;
         }
         
-        #salva os dados do formulario na tabela CREDENCIADO 
-        app('App\Http\Controllers\GravaFormController')->index($request);
-
-        
-        /*
-        $files = explode(",",$filename);
-        foreach ($files as $file) { 
-            #unlink($file) ;
-        } 
-        */
         echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');document.location='https://www.meuparca.com/';</script>";
         return view('mailView');
         //return redirect()->back()->with('success', 'Enviado com Sucesso - Aguarde Contato.');
