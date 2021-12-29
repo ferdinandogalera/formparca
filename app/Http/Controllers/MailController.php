@@ -92,7 +92,7 @@ class MailController extends Controller
             $filename .= ",".$filename5;
         }
 
-        echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');";
+        echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');</script>";
         return view('mailView');
         
         #enviar os email com os anexos 
