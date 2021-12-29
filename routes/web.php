@@ -13,6 +13,7 @@ Route::view('form', 'site.home');
 */
 
 
+
 Route::get('mail', [MailController::class, 'mailView'])->name('mailView');
 Route::post('send-mail', [MailController::class, 'mailSend'])->name('mailSend');
 
