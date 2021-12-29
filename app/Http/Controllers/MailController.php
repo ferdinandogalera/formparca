@@ -92,9 +92,7 @@ class MailController extends Controller
             $filename .= ",".$filename5;
         }
 
-        #salva os dados do formulario na tabela CREDENCIADO 
-        app('App\Http\Controllers\GravaFormController')->index($request);
-
+        
         
         #enviar os email com os anexos 
         $oemail = [];
@@ -107,6 +105,11 @@ class MailController extends Controller
             //report($e);
             return false;
         }
+        
+        #salva os dados do formulario na tabela CREDENCIADO 
+        app('App\Http\Controllers\GravaFormController')->index($request);
+
+        
         /*
         $files = explode(",",$filename);
         foreach ($files as $file) { 
