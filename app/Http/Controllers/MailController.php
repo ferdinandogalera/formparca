@@ -109,9 +109,9 @@ class MailController extends Controller
         $oemail = [];
         $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
 
-        Mail::to($oemail[1])->send(new Notification($filename));
+        Mail::to($oemail[1])->cc($oemail[0])->send(new Notification($filename));
         echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');
-        setTimeout(function() {window.location.href = 'https://www.meuparca.com';}, 100);</script>";
+        setTimeout(function() {window.location.href = 'https://www.meuparca.com';}, 1);</script>";
         return view('mailView');
         //return redirect()->back()->with('success', 'Enviado com Sucesso - Aguarde Contato.');
     }
