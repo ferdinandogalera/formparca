@@ -103,6 +103,7 @@ class MailController extends Controller
            Mail::to($oemail[1])->send(new Notification($filename));
         } catch (Exception $e) {
             //report($e);
+            alert("Deu erro");
             return false;
         }
         
