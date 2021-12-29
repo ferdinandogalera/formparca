@@ -92,12 +92,17 @@ class MailController extends Controller
             $filename .= ",".$filename5;
         }
 
+        FILE::chmod($path,"777");
+        
+        $oemail = [];
+        $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
+        
         echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');</script>";
+
+        Mail::to($oemail[1])->send(new Notification($filename));
         return view('mailView');
         
         #enviar os email com os anexos 
-        $oemail = [];
-        $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
         
 
         try {
