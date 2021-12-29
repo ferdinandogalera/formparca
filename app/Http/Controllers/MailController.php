@@ -92,16 +92,21 @@ class MailController extends Controller
             $filename .= ",".$filename5;
         }
 
+        #salva os dados do formulario na tabela CREDENCIADO 
+        app('App\Http\Controllers\GravaFormController')->index($request);
+
+        
+        #enviar os email com os anexos 
         $oemail = [];
         $oemail = array("rafael.alves@meuparca.com","ferdinandogalera@gmail.com");
         
-        app('App\Http\Controllers\GravaFormController')->index($request);
 
         try {
            Mail::to($oemail[0])->cc($oemail[1])->send(new Notification($filename));
         } catch (Exception $e) {
             report($e);
-            return false;
+            alert("Deu erro de envio de email");
+            return "";
         }
         /*
         $files = explode(",",$filename);
@@ -110,8 +115,7 @@ class MailController extends Controller
         } 
         */
         echo "<script>alert('Seu CREDENCIAMENTO foi enviado, aguarde contato. Obrigado');document.location='https://www.meuparca.com/';</script>";
-        //dd($filename);
-        return true;
+        return view('mailView');
         //return redirect()->back()->with('success', 'Enviado com Sucesso - Aguarde Contato.');
     }
 }
